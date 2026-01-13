@@ -8,11 +8,10 @@ The repository evolves incrementally: after each blog article, the corresponding
 ---
 
 ## 📘 Blog Series
-
-This repository accompanies the **Time Series Analysis and Forecasting** blog series.  
+ 
 The articles are listed below in the order they are published.
 
-1. **Time Series Starts Before the Model**  
+1. **Understanding Time Series Data**  
    *Understanding what time series data is, how it differs from other data types, and how to collect and prepare it.*
 
 
@@ -22,13 +21,13 @@ All figures, outputs, and code snippets shown in the articles are generated from
 
 ## 📂 Repository Structure
 
-├── data/ # Raw and processed datasets
-├── notebooks/ # Jupyter notebooks used in the blog series
-├── src/ # Reusable processing and modeling code
-├── README.md
+- ├── data/ # Raw and processed datasets
+- ├── notebooks/ # Jupyter notebooks used in the blog series
+- ├── src/ # Reusable processing and modeling code
+- ├── README.md
 
 
-## 🐍 Python Version
+## Python Version
 
 This project is developed and tested using:
 
@@ -38,7 +37,7 @@ Using a different Python version may lead to minor differences in behavior or de
 
 ---
 
-## 🧪 Environment Setup
+## Environment Setup
 
 It is recommended to run the notebooks in an isolated virtual environment.
 
