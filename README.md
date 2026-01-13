@@ -11,7 +11,7 @@ The repository evolves incrementally: after each blog article, the corresponding
  
 The articles are listed below in the order they are published.
 
-1. **Understanding Time Series Data**  
+1. **Understanding Time Series Data(https://anill-hayriye.medium.com/understanding-time-series-data-8a4ba48309ee)**  
    *Understanding what time series data is, how it differs from other data types, and how to collect and prepare it.*
 
 
