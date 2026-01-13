@@ -1,0 +1,52 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Data files (adjust if needed)
+# =========================
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.xlsx
+data/raw_data/
+data/processed_data/
+
+# =========================
+# Generated figures / outputs
+# =========================
+figures/
+outputs/
+*.png
+*.jpg
+*.jpeg
+*.svg
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# =========================
+# Logs
+# =========================
+*.log
