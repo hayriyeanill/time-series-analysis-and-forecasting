@@ -14,6 +14,8 @@ The articles are listed below in the order they are published.
 1. **[Understanding Time Series Data](https://anill-hayriye.medium.com/understanding-time-series-data-8a4ba48309ee)**  
    *Understanding what time series data is, how it differs from other data types, and how to collect and prepare it.*
 
+2. **[Exploratory Analysis for Time Series](https://medium.com/@anill-hayriye/exploratory-analysis-for-time-series-ad821abb517e)**  
+   *Exploratory techniques for time series data, including trend and seasonality analysis, stationarity checks, and correlation analysis, providing the foundation needed for time series analysis.*
 
 All figures, outputs, and code snippets shown in the articles are generated from this repository.
 
