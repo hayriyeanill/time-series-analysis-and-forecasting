@@ -178,6 +178,33 @@ def plot_bar(
     fig.show()
 
 
+def plot_bar_group(data: pd.DataFrame,
+                   x_var: str, y_var: str,
+                   color: str, text: str,
+                   plot_title: str):
+    """Plot bar chart for compare groups.
+
+    Args:
+        data (pd.DataFrame): The input DataFrame containing the data to plot
+        x_var (str): Column name for x-axis categories
+        y_var (str): Column name for y-axis values (bar heights)
+        color (str): Column name for grouping/coloring the bars
+        text (str): Column name for bar labels
+        plot_title (str): Main title for the plot
+
+    Returns:
+        None: Displays the plot directly
+    """
+    fig = px.bar(data,
+                 x=x_var,
+                 y=y_var,
+                 color=color,
+                 text=text,
+                 title=plot_title,
+                 barmode='group')
+    fig.show()
+
+
 def plot_histogram(
     data: pd.DataFrame,
     x_var: str,
