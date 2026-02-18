@@ -17,6 +17,9 @@ The articles are listed below in the order they are published.
 2. **[Exploratory Analysis for Time Series](https://medium.com/@anill-hayriye/exploratory-analysis-for-time-series-ad821abb517e)**  
    *Exploratory techniques for time series data, including trend and seasonality analysis, stationarity checks, and correlation analysis, providing the foundation needed for time series analysis.*
 
+3. **[Forecasting Starts With Simple Models](https://anill-hayriye.medium.com/forecasting-starts-with-simple-models-978f6ad8df39)**  
+   *Simple baseline models for time series data are explored, including arithmetic mean, rolling mean, persistence naive 1-hour model, and seasonal naive 24-hour model. Evaluation and interpretation of these models are discussed, the concept of multi-horizon forecasting is introduced, and its application is demonstrated on real data.*
+
 All figures, outputs, and code snippets shown in the articles are generated from this repository.
 
 ---
