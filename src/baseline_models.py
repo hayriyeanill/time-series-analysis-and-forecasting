@@ -137,10 +137,10 @@ def baseline_rolling_mean_for_multihorizon(
 ) -> pd.DataFrame:
     """Rolling mean baseline model for multi-horizon forecasting.
 
-    Computes a rolling mean of the past window_size observations at each time
-    step. The level slowly adapts over time as new observations become
-    available. Uses different rolling means for each forecast horizon to
-    avoid data leakage.
+    Computes a rolling mean of the past window_size observations (using shift(1)
+    to prevent data leakage) at each time step. The level slowly adapts over time
+    as new observations become available. The rolling mean represents the forecast level
+    available at time t.
 
     Args:
         data: Full dataset (train + test)
@@ -161,9 +161,7 @@ def baseline_rolling_mean_for_multihorizon(
 
     for i in range(1, forecast_days + 1):
         period = i * timestamps_per_day
-        rolling_mean_baseline_df[f"H+{period}"] = rolling_mean.loc[
-            test_set.index
-        ].shift(-(period - timestamps_per_day))
+        rolling_mean_baseline_df[f"H+{period}"] = rolling_mean.shift(-period)
     rolling_mean_baseline_df.dropna(inplace=True)
     return rolling_mean_baseline_df
 
@@ -192,10 +190,10 @@ def baseline_model_seasonal_naive_1h_for_multihorizon(
     """
     baseline_df = pd.DataFrame()
     baseline_df[target] = test_set[target]
+    lag1 = test_set[target].shift(1)
     for i in range(1, forecast_days + 1):
         period = i * timestamps_per_day
-        shifted_column = test_set[target].shift(i)
-        baseline_df[f"H+{period}"] = shifted_column
+        baseline_df[f"H+{period}"] = lag1.shift(period)
 
     baseline_df.dropna(inplace=True)
     return baseline_df
