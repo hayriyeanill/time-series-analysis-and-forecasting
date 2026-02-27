@@ -299,3 +299,134 @@ def plot_heatmap(data: pd.DataFrame):
     )
 
     fig.show()
+
+
+def compare_performance_by_horizon(sliding_performance: pd.DataFrame,
+                                   extending_performance: pd.DataFrame,
+                                   metrics: list,
+                                   model_name: str) -> None:
+    """Plot comparison of performance metrics by forecast horizon
+    for sliding and extending window backtesting techniques for
+    one model.
+
+    Args:
+        sliding_performance (pd.DataFrame): DataFrame containing performance metrics for sliding window technique.
+        extending_performance (pd.DataFrame): DataFrame containing performance metrics for extending window technique.
+        metrics (list): List of metric names to compare.
+
+    Returns:
+        None: Displays the plots comparing performance metrics by horizon.
+    """
+    for metric in metrics:
+        fig = px.line()
+        fig.add_scatter(
+            x=sliding_performance["horizon"],
+            y=sliding_performance[metric],
+            mode='lines+markers',
+            name='Sliding Window',
+            line=dict(color='blue')
+        )
+
+        fig.add_scatter(
+            x=extending_performance["horizon"],
+            y=extending_performance[metric],
+            mode='lines+markers',
+            name='Extending Window',
+            line=dict(color='red')
+        )
+        if metric == "Bias (°C)":
+            fig.add_trace(
+                go.Scatter(x=sliding_performance["horizon"],
+                           y=[0] * len(sliding_performance["horizon"]),
+                           mode='lines',
+                           line=dict(color='black', width=2),
+                           name='Zero Bias Line'))
+
+        fig.update_layout(
+            title=f'{metric} Performance by Horizon for {model_name} Model',
+            xaxis_title='Horizon',
+            yaxis_title=metric,
+            legend_title='Backtesting Technique'
+        )
+        fig.show()
+
+
+def compare_models_by_horizon(model_performances: dict,
+                              metrics: list,
+                              technique: str) -> None:
+    """Plot comparison of performance metrics by forecast horizon
+    for multiple models.
+
+    Args:
+        model_performances (dict): Dictionary with model names as keys and performance DataFrames as values. 
+        metrics (list): List of metric names to compare.
+        technique (str): Backtesting technique name (e.g., 'Sliding Window', 'Extending Window').
+
+    Returns:
+        None: Displays the plots comparing performance metrics by horizon.
+    """
+    colors = ['blue', 'red', 'green', 'orange', 'purple', 'brown']
+
+    for metric in metrics:
+        fig = px.line()
+
+        for idx, (model_name, perf_df) in enumerate(model_performances.items()):
+            fig.add_scatter(
+                x=perf_df["horizon"],
+                y=perf_df[metric],
+                mode='lines+markers',
+                name=model_name,
+                line=dict(color=colors[idx % len(colors)])
+            )
+
+        if metric == "Bias (°C)":
+            first_perf = list(model_performances.values())[0]
+            fig.add_trace(
+                go.Scatter(x=first_perf["horizon"],
+                           y=[0] * len(first_perf["horizon"]),
+                           mode='lines',
+                           line=dict(color='black', width=2),
+                           name='Zero Bias Line'))
+
+        fig.update_layout(
+            title=f'{metric} Performance by Horizon ({technique})',
+            xaxis_title='Horizon',
+            yaxis_title=metric,
+            legend_title='Model'
+        )
+        fig.show()
+
+
+def compare_techniques_by_model(model_performances: dict,
+                                metric: str) -> None:
+    """Compare sliding vs extending window techniques across models
+    for each horizon.
+
+    Args:
+        model_performances (dict): Nested dict with structure:
+        metric (str): Metric to compare (default: 'MAE (°C)')
+
+    Returns:
+        None: Displays the plot
+    """
+    # Get all horizons from first model
+    first_model = list(model_performances.values())[0]
+    first_technique = list(first_model.values())[0]
+    horizons = first_technique['horizon'].unique()
+
+    for horizon in horizons:
+        data = []
+        for model_name, techniques in model_performances.items():
+            for technique_name, perf_df in techniques.items():
+                horizon_data = perf_df[perf_df['horizon'] == horizon]
+                data.append({
+                    'Model': model_name,
+                    'Technique': technique_name,
+                    metric: horizon_data[metric].values[0]
+                })
+
+        df = pd.DataFrame(data)
+        fig = px.bar(df, x='Model', y=metric, color='Technique',
+                     barmode='group',
+                     title=f'{metric} Comparison at {horizon}')
+        fig.show()
