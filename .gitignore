@@ -15,7 +15,7 @@ env/
 # Jupyter Notebook
 # =========================
 .ipynb_checkpoints/
-
+*/.ipynb_checkpoints/*
 # =========================
 # Data files (adjust if needed)
 # =========================
