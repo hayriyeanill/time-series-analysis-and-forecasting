@@ -20,6 +20,10 @@ The articles are listed below in the order they are published.
 3. **[Forecasting Starts With Simple Models](https://anill-hayriye.medium.com/forecasting-starts-with-simple-models-978f6ad8df39)**  
    *Simple baseline models for time series data are explored, including arithmetic mean, rolling mean, persistence naive 1-hour model, and seasonal naive 24-hour model. Evaluation and interpretation of these models are discussed, the concept of multi-horizon forecasting is introduced, and its application is demonstrated on real data.*
 
+4. **[The Architecture of Statistical Forecasting](https://medium.com/@anill-hayriye/the-architecture-of-statistical-forecasting-fafa5ceeae18)**  
+   *Classical statistical forecasting models (AR, MA, ARMA, ARIMA, SARIMA, SARIMAX, and VAR) for temperature prediction, leveraging time series properties like autocorrelation, trends, and seasonality. Using a backtesting framework with sliding window and extending window techniques, multi-horizon forecasts. Compare performance against baseline benchmark and analyze forecast accuracy degradation over time.*
+
+
 All figures, outputs, and code snippets shown in the articles are generated from this repository.
 
 ---
