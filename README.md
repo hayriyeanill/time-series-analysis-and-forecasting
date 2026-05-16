@@ -64,6 +64,5 @@ pip install -r requirements.txt
 
 
 ## Usage
+This project is licensed under the MIT License.
 
-This repository is shared for educational and demonstration purposes.  
-Please do not reuse or redistribute the code without permission.
